@@ -5,6 +5,5 @@ import App from './components/App';
 import './reset.css';
 import './styles.css';
 
-const el = document.querySelector('#root') as HTMLElement;
-const root = createRoot(el);
+const root = createRoot(document.querySelector('#root') as HTMLElement);
 root.render(<App />);
