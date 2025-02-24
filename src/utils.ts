@@ -1,9 +1,9 @@
-export const sample = (arr) => {
+export const sample = <T>(arr: T[]): T => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-export const range = (start, end, step = 1) => {
-  let output = [];
+export const range = (start: number, end?: number, step: number = 1): number[] => {
+  let output: number[] = [];
   if (typeof end === 'undefined') {
     end = start;
     start = 0;
