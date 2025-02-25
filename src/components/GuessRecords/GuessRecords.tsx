@@ -5,9 +5,10 @@ import Guess from "components/Guess";
 
 interface GuessRecordsProps {
   guessRecords: GuessRecord[];
+  answer: string;
 }
 
-function GuessRecords({ guessRecords }: GuessRecordsProps) {
+function GuessRecords({ guessRecords, answer }: GuessRecordsProps) {
   return (
     <div className="guess-results">
       {range(NUM_OF_GUESSES_ALLOWED).map((i) => {
@@ -17,6 +18,7 @@ function GuessRecords({ guessRecords }: GuessRecordsProps) {
         };
         return (
           <Guess
+            answer={answer}
             guess={guessRecord.guess}
             key={guessRecord.id}
             id={guessRecord.id}

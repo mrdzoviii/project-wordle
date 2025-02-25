@@ -20,9 +20,10 @@ function Game() {
   const onGuess = (guess: string) => {
     setGuesses([...guesses, { guess, id: crypto.randomUUID() }]);
   };
+
   return (
     <>
-      <GuessRecords guessRecords={guesses} />
+      <GuessRecords guessRecords={guesses} answer={answer} />
       <GuessInput guess={guess} setGuess={setGuess} onGuess={onGuess} />
     </>
   );

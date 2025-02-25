@@ -3,22 +3,25 @@
  * solving algorithm!
  */
 
-interface GuessResult {
+export interface GuessResult {
   letter: string;
-  status: 'correct' | 'misplaced' | 'incorrect';
+  status: "correct" | "misplaced" | "incorrect" | "";
 }
 
-export function checkGuess(guess: string, answer: string): GuessResult[] | null {
+export function checkGuess(
+  guess: string,
+  answer: string
+): GuessResult[] | null {
   // This constant is a placeholder that indicates we've successfully
   // dealt with this character (it's correct, or misplaced).
-  const SOLVED_CHAR = '✓';
+  const SOLVED_CHAR = "✓";
 
   if (!guess) {
     return null;
   }
 
-  const guessChars = guess.toUpperCase().split('');
-  const answerChars = answer.split('');
+  const guessChars = guess.toUpperCase().split("");
+  const answerChars = answer.split("");
 
   const result: GuessResult[] = [];
 
@@ -27,7 +30,7 @@ export function checkGuess(guess: string, answer: string): GuessResult[] | null 
     if (guessChars[i] === answerChars[i]) {
       result[i] = {
         letter: guessChars[i],
-        status: 'correct',
+        status: "correct",
       };
       answerChars[i] = SOLVED_CHAR;
       guessChars[i] = SOLVED_CHAR;
@@ -40,12 +43,12 @@ export function checkGuess(guess: string, answer: string): GuessResult[] | null 
       continue;
     }
 
-    let status: 'correct' | 'misplaced' | 'incorrect' = 'incorrect';
+    let status: "correct" | "misplaced" | "incorrect" = "incorrect";
     const misplacedIndex = answerChars.findIndex(
-        (char) => char === guessChars[i]
+      (char) => char === guessChars[i]
     );
     if (misplacedIndex >= 0) {
-      status = 'misplaced';
+      status = "misplaced";
       answerChars[misplacedIndex] = SOLVED_CHAR;
     }
 
