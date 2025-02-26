@@ -124,20 +124,45 @@ h1 {
   --radius: 0px 0px 0px 4px;
 }
 
-.cell.correct {
+.cell.correct, .guess-keyboard-key.correct {
   background: var(--color-success);
   border-color: var(--color-success);
   color: white;
 }
-.cell.incorrect {
+.cell.incorrect , .guess-keyboard-key.incorrect{
   background: var(--color-gray-300);
   border-color: var(--color-gray-300);
   color: white;
 }
-.cell.misplaced {
+.cell.misplaced, .guess-keyboard-key.misplaced {
   background: var(--color-warning);
   border-color: var(--color-warning);
   color: white;
+}
+
+.guess-keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.guess-keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.guess-keyboard-key {
+  width: 40px;
+  display: grid;
+  place-content: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  font-size: 2rem;
+  background: var(--color-gray-900);
+  border-color: var(--color-gray-900);
+  color: black;
 }
 
 .guess-input-wrapper {
