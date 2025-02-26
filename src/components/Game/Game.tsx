@@ -1,5 +1,3 @@
-import { sample } from "utils";
-import { WORDS } from "data";
 import GuessInput from "components/GuessInput";
 import { useState } from "react";
 import GuessRecords from "components/GuessRecords";
@@ -9,17 +7,17 @@ import Banner from "components/Banner";
 import GuessKeyboard from "components/GuessKeyboard";
 import { generateKeyboardMap } from "components/Game/helpers";
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-
 export type GuessRecord = {
   guess: string;
   id: string;
 };
 
-function Game() {
+interface GameProps {
+  answer: string;
+  resetGame: () => void;
+}
+
+function Game({ answer, resetGame }: GameProps) {
   const [guess, setGuess] = useState("");
   const [guessOutcome, setGuessOutcome] = useState<"playing" | "sad" | "happy">(
     "playing"
@@ -62,6 +60,7 @@ function Game() {
       />
       <GuessKeyboard keyMap={keyMap} />
       <Banner
+        resetGame={resetGame}
         answer={answer}
         status={guessOutcome}
         numberOfGuesses={numOfGuesses}

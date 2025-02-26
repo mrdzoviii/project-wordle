@@ -2,9 +2,10 @@ interface BannerProps {
   status: "happy" | "sad" | "playing";
   numberOfGuesses: number;
   answer: string;
+  resetGame: () => void;
 }
 
-function Banner({ status, numberOfGuesses, answer }: BannerProps) {
+function Banner({ status, numberOfGuesses, answer, resetGame }: BannerProps) {
   if (status === "playing") return null;
   if (status === "happy") {
     return (
@@ -13,6 +14,9 @@ function Banner({ status, numberOfGuesses, answer }: BannerProps) {
           <strong>Congratulations!</strong> Got it in{" "}
           <strong>{numberOfGuesses} guesses</strong>.
         </p>
+        <button className="reset-button" onClick={resetGame}>
+          Play Again
+        </button>
       </div>
     );
   }
@@ -21,6 +25,9 @@ function Banner({ status, numberOfGuesses, answer }: BannerProps) {
       <p>
         Sorry, the correct answer is <strong>{answer}</strong>.
       </p>
+      <button className="reset-button" onClick={resetGame}>
+        Play Again
+      </button>
     </div>
   );
 }
